@@ -1,0 +1,1 @@
+protoc -I definition definition\authors.proto --go_out=plugins=grpc:stub

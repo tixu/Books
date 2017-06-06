@@ -1,0 +1,18 @@
+syntax = "proto3";
+service author {
+  rpc getAuthor(AuthorRequest) returns (Author){}
+}
+
+message AuthorRequest{
+  string id =1;  
+}
+
+
+
+message Author {
+  string id =1;
+  string lastname = 1;
+  string firstname = 2;
+  int32 year = 3;
+  string country = 5;
+}

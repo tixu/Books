@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+service Books {
+  rpc GetBook(GetBookRequest) returns (BookReply){}
+  rpc CreateBook(CreateBookRequest) returns (BookReply){} 
+  rpc DeleteBook(DeleteBookRequest) returns(google.protobuf.Empty){} 
+}
+
+message GetBookRequest{
+  oneof Criteria {
+    uint64 bookid =1;
+    string isbn =2 ; 
+ }
+}
+
+message CreateBookRequest {
+  Book book = 1;
+}
+message DeleteBookRequest {
+  uint64 bookid =1;
+}
+
+message BookReply{
+  repeated Book book =1;
+}
+
+message Book {
+  uint64 id =1 ;
+  string title = 2;
+  int32 page = 3;
+  string author = 4;
+  string pubslisher = 5;
+  string isbn13 = 6;
+}
